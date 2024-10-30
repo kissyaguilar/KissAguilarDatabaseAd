@@ -32,7 +32,37 @@
             
             <?php
                 include 'connect.php';
-                
+
+                //GC messages//
+                $groupChatID = 1;
+                $queryMessages = "SELECT *
+                FROM messages WHERE groupChatID = $groupChatID";
+                $resultMessages = executeQuery($queryMessages);
+
+                if ($resultMessages && mysqli_num_rows($resultMessages) > 0) {
+                    while ($message = mysqli_fetch_assoc($resultMessages)) {
+                        $senderID = $message ['senderID'];
+
+                        // Select and retrieve the sender's name, and profile picture via phpMyadmin
+                        $querySender = "SELECT memberName, profilePicture 
+                        FROM gcMembers WHERE userID = $senderID";
+                        $resultSender = executeQuery($querySender);
+
+                        if ($resultSender && mysqli_num_rows(resultSender) > 0) {
+                            $senderData = mysqli_fetch_assoc ($resultSender);
+                            $senderName = $senderData['memberName'];
+                            $profilePicture = $senderData['profilePicture'];
+                        }
+                        else {
+                            $senderName = "Unknown";
+                            $profilePicture = "imgaes/default.png";
+                        }
+
+                        
+
+
+                    }
+                }
 
                 ?>
         </div>
