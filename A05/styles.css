@@ -1,11 +1,11 @@
 /* EmotiChat Header */
 .main-header {
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: bold;
     color: white;
     background-color: #a65ac9;
     text-align: center;
-    padding: 15px;
+    padding: 20px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
@@ -23,6 +23,7 @@
 /* Emotions Header */
 .header {
     display: flex;
+    font-size: 1.5em;
     align-items: center;
     justify-content: space-between;
     padding: 15px;
@@ -36,7 +37,6 @@
 }
 
 .group-chat-photo {
-
     background-size: cover;
     border-radius: 50%;
 }
@@ -47,6 +47,7 @@
     color: white;
     margin-left: 15px;
 }
+
 .header-icons {
     display: flex;
     gap: 15px;
@@ -59,14 +60,8 @@
     border-radius: 50%;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
     cursor: pointer;
-}
-
-.call,
-.video,
-.more {
-    /* NOTE: not finalized */
 }
 
 /* Messages Section */
@@ -102,12 +97,13 @@
 
 .name {
     font-weight: bold;
-    font-size: 0.9em;
+    font-size: 1em;
     color: #f0c4ff;
 }
 
 .text {
     margin-top: 5px;
+    font-size: 1.5em;
 }
 
 /* Input Section */
@@ -138,8 +134,14 @@
 .icon.gif,
 .icon.sticker,
 .icon.send {
-    width: 30px;
-    height: 30px;
-    background-color: rgba(255, 255, 255, 0.7);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(221, 161, 214, 0.7);
     border-radius: 50%;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+    background-color: rgba(238, 191, 235, 0.7);
+    cursor: pointer;
 }
