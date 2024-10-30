@@ -1,0 +1,52 @@
+/* EmotiChat Header*/
+.main-header {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    background-color: #a65ac9;
+    text-align: center;
+    padding: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.chat-container {
+    width: 60%;
+    margin: auto;
+    background-color: #f0c4ff;
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Emotions Header (GC name) */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: #d39de6;
+}
+
+.group-chat-info {
+    display: flex;
+    align-items: center;
+}
+
+.group-chat-photo {
+    width: 60px;
+    height: 60px;
+    /* emotions group chat photo note: NOT FINAL */
+    background-image: url('images/gcPhoto.png'); 
+    background-size: cover;
+}
+
+.group-chat-name {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: white;
+    margin-left: 15px;
+}
+

@@ -8,6 +8,36 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="chat-container"
+         <!-- Main Header -->
+        <div class="main-header">
+            EmotiChat
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="group-chat-info">
+                <div class="group-chat-photo"></div>
+                <div class="group-chat-name">Emotions</div>
+            </div>
+            <div class="header-icons">
+                <div class="icon call"></div>
+                <div class="icon video"></div>
+                <div class="icon more"></div>
+            </div>
+        </div>
+
+        <!-- Messages Section -->
+        <div class="messages-section">
+            
+            <?php
+                include 'connect.php';
+                
+
+                ?>
+        </div>
+
+
 
 </body>
 </html>
