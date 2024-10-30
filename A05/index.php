@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>
@@ -17,9 +17,7 @@
         </div>
 
         <!-- Header -->
-
-     <!-- Header -->
-     <div class="header">
+        <div class="header">
             <div class="group-chat-info">
                 <div class="group-chat-photo">
                     <?php
@@ -27,12 +25,13 @@
                         
                         // Fetch Group Chat Picture
                         $groupChatID = 1;
-                        $queryGroupChat = "SELECT picture FROM groupChats WHERE groupChatID = $groupChatID";
+                        $queryGroupChat = "SELECT picture, theme FROM groupChats WHERE groupChatID = $groupChatID"; 
                         $resultGroupChat = executeQuery($queryGroupChat);
 
                         if ($resultGroupChat && mysqli_num_rows($resultGroupChat) > 0) {
                             $groupChatData = mysqli_fetch_assoc($resultGroupChat);
                             $groupChatPicture = $groupChatData['picture'];
+                            $theme = $groupChatData['theme']; // Kumuha ng theme
                             echo "<img src='images/" . htmlspecialchars($groupChatPicture) . "' alt='Group Chat Picture'>";
                         } else {
                             echo "<img src='images/default-group.png' alt='Default Group Chat Picture'>";
@@ -50,11 +49,9 @@
         </div>
 
         <!-- Messages Section -->
-        <div class="messages-section">
+        <div class="messages-section" style="background-image: url('images/<?php echo htmlspecialchars($theme); ?>');"> <!-- Itinatakda ang background -->
             <?php
-
                 // Group Chat Messages
-                $groupChatID = 1;
                 $queryMessages = "SELECT * FROM messages WHERE groupChatID = $groupChatID";
                 $resultMessages = executeQuery($queryMessages);
 

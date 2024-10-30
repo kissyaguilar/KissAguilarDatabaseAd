@@ -70,7 +70,6 @@
     padding: 15px;
     flex: 1;
     overflow-y: auto;
-    background-image: url('images/themeEmotion.png');
     background-size: cover;
     background-blend-mode: lighten;
 }
