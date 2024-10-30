@@ -31,7 +31,7 @@
                         if ($resultGroupChat && mysqli_num_rows($resultGroupChat) > 0) {
                             $groupChatData = mysqli_fetch_assoc($resultGroupChat);
                             $groupChatPicture = $groupChatData['picture'];
-                            $theme = $groupChatData['theme']; // Kumuha ng theme
+                            $theme = $groupChatData['theme']; 
                             echo "<img src='images/" . htmlspecialchars($groupChatPicture) . "' alt='Group Chat Picture'>";
                         } else {
                             echo "<img src='images/default-group.png' alt='Default Group Chat Picture'>";
