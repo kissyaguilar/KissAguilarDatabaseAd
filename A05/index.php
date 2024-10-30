@@ -25,7 +25,7 @@
                         
                         // Fetch Group Chat Picture
                         $groupChatID = 1;
-                        $queryGroupChat = "SELECT picture, theme FROM groupChats WHERE groupChatID = $groupChatID"; 
+                        $queryGroupChat = "SELECT picture, theme, voiceCall, videoChat, more, attachment, gallery, GIF FROM groupChats WHERE groupChatID = $groupChatID"; 
                         $resultGroupChat = executeQuery($queryGroupChat);
 
                         if ($resultGroupChat && mysqli_num_rows($resultGroupChat) > 0) {
@@ -39,17 +39,19 @@
                     ?>
                 </div>
                 <div class="group-chat-name">Emotions</div>
-                <div class="status-indicator"></div>
+
             </div>
             <div class="header-icons">
-                <div class="icon call"></div>
-                <div class="icon video"></div>
-                <div class="icon more"></div>
+            <?php
+            echo "<div class='icon call' style='background-image: url(images/" . htmlspecialchars($groupChatData['voiceCall']) . ");'></div>";
+            echo "<div class='icon videoChat' style='background-image: url(images/" . htmlspecialchars($groupChatData['videoChat']) . ");'></div>";
+            echo "<div class='icon more' style='background-image: url(images/" . htmlspecialchars($groupChatData['more']) . ");'></div>";
+            ?>
             </div>
         </div>
 
         <!-- Messages Section -->
-        <div class="messages-section" style="background-image: url('images/<?php echo htmlspecialchars($theme); ?>');"> <!-- Itinatakda ang background -->
+        <div class="messages-section" style="background-image: url('images/<?php echo htmlspecialchars($theme); ?>');"> 
             <?php
                 // Group Chat Messages
                 $queryMessages = "SELECT * FROM messages WHERE groupChatID = $groupChatID";
@@ -91,9 +93,12 @@
         <!-- Input Section (Typing display - does not insert) -->
         <div class="input-section">
             <div class="input-icons">
-                <div class="icon add"></div>
-                <div class="icon gif"></div>
-                <div class="icon sticker"></div>
+            <?php
+            echo "<div class='icon attachment' style='background-image: url(images/" . htmlspecialchars($groupChatData['attachment']) . ");'></div>";
+            echo "<div class='icon gallery' style='background-image: url(images/" . htmlspecialchars($groupChatData['gallery']) . ");'></div>";
+            echo "<div class='icon GIF' style='background-image: url(images/" . htmlspecialchars($groupChatData['GIF']) . ");'></div>";
+            ?>
+              
             </div>
             <input type="text" class="message-input" placeholder="Aa">
             <div class="icon send"></div>
