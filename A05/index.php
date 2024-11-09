@@ -100,7 +100,7 @@
                 <?php
                     echo "<div class='icon attachment' style='background-image: url(images/" . htmlspecialchars($groupChatData['attachment']) . ");'></div>";
                     echo "<div class='icon gallery' style='background-image: url(images/" . htmlspecialchars($groupChatData['gallery']) . ");'></div>";
-                    echo "<div class='icon GIF' style='background-image: url(images/" . htmlspecialchars($groupChatData['GIF']) . ");'></div>";
+                    echo "<div class='icon gif' style='background-image: url(images/" . htmlspecialchars($groupChatData['gif']) . ");'></div>";
                 ?>
             </div>
             <input type="text" class="message-input" placeholder="Aa">
