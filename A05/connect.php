@@ -1,8 +1,8 @@
 <?php
-  $dbhost = "localhost";
+  $dbhost = "localHost";
 	$dbuser = "root";
 	$dbpass = "";
-	$db = "connecthub";
+	$db = "connectHub";
 
 	$conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
 

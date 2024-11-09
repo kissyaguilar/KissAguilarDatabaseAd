@@ -25,7 +25,7 @@
                         
                         // Fetch Group Chat Picture
                         $groupChatID = 1;
-                        $queryGroupChat = "SELECT picture, theme, voiceCall, videoChat, more, attachment, gallery, GIF, sendMessage 
+                        $queryGroupChat = "SELECT picture, theme, voiceCall, videoChat, more, attachment, gallery, gif, sendMessage 
                                            FROM groupChats 
                                            WHERE groupChatID = $groupChatID"; 
                         $resultGroupChat = executeQuery($queryGroupChat);

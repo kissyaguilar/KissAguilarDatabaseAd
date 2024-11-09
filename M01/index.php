@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/logoIcon.png" type="image"> <!-- for logo -->
+    <link rel="shortcut icon" href="images/logoTab.png" type="image"> <!-- for logo -->
     <title>EmotiChat Group Chat</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -14,7 +14,7 @@
     <div class="chat-container">
         <!-- Main Header -->
         <div class="main-header"
-            style="text-align: center; display: flex; flex-direction: column; align-items: center;padding: 10px;">
+            style="text-align: center; display: flex; flex-direction: column; align-items: center; padding: 10px;">
             <img src="images/logo.png" alt="EmotiChat Logo" style="max-width: auto; height: 50px;">
             <h1 style="font-size: 50px;">EmotiChat</h1>
         </div>
@@ -144,7 +144,7 @@
                         placeholder="Type a message..." required>
 
                     <button type="submit" class="icon send"
-                        style="background-image: url(images/<?php echo htmlspecialchars($groupChatData['sendMessage']); ?>);"></button>
+                        style="background-image: url(images/<?php echo htmlspecialchars($groupChatData['sendMessage']); ?>); border: none;"></button>
 
                     <input type="hidden" name="groupChatID" value="1">
                     <input type="hidden" name="senderID" value="8">

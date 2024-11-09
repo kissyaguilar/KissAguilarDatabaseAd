@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $groupChatID = intval($_POST['groupChatID']);
     $senderID = intval($_POST['senderID']);
 
+    // INSERT OF DATA
     $stmt = $conn->prepare("INSERT INTO messages (message, groupChatID, senderID) VALUES (?, ?, ?)");
     $stmt->bind_param("sii", $message, $groupChatID, $senderID);
 

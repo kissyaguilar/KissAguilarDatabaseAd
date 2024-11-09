@@ -122,14 +122,14 @@
 }
 
 /* Messages Section */
-.messages-section {
+.messagesSection {
     display: flex;
     gap: 10px;
     justify-content: space-between;
 }
 
-.left-messages,
-.right-messages {
+.leftMessages,
+.rightMessages {
     width: 48%;
 }
 
