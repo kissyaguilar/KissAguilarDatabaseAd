@@ -1,0 +1,147 @@
+/* EmotiChat Header */
+.main-header {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    background-color: #a65ac9;
+    text-align: center;
+    padding: 20px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.chat-container {
+    width: 60%;
+    margin: auto;
+    background-color: #f0c4ff;
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Emotions Header */
+.header {
+    display: flex;
+    font-size: 1.5em;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: #d39de6;
+}
+
+.group-chat-info {
+    display: flex;
+    align-items: center;
+}
+
+.group-chat-photo {
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.group-chat-name {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: white;
+    margin-left: 15px;
+}
+
+.header-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    width: 35px;
+    height: 35px;
+    background-color: rgba(230, 171, 228, 0.7);
+    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+/* Messages Section */
+.messages-section {
+    padding: 15px;
+    flex: 1;
+    overflow-y: auto;
+    background-size: cover;
+    background-blend-mode: lighten;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.profile-picture {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ddd;
+    margin-right: 50px;
+}
+
+.message-content {
+    max-width: 70%;
+    background-color: #9062ff;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 1em;
+    color: #f0c4ff;
+}
+
+.text {
+    margin-top: 5px;
+    font-size: 1.5em;
+}
+
+/* Input Section */
+.input-section {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: #e0baff;
+    border-radius: 0 0 15px 15px;
+}
+
+.input-icons {
+    display: flex;
+    gap: 15px;
+    margin-right: 10px;
+}
+
+.message-input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+
+.icon.add,
+.icon.gif,
+.icon.sticker,
+.icon.send {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(221, 161, 214, 0.7);
+    border-radius: 50%;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+    background-color: rgba(238, 191, 235, 0.7);
+    cursor: pointer;
+}
