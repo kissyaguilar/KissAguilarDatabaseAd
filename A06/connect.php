@@ -1,14 +1,19 @@
 <?php
-$servername = "localhost";
-$username = "root"; // Default for XAMPP
-$password = ""; // Default for XAMPP
-$dbname = "connectHub";
+  $dbhost = "localHost";
+	$dbuser = "root";
+	$dbpass = "";
+	$db = "connectHub";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+	$conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+	if(!$conn)
+	{
+		die("Connection Failed. ". mysqli_connect_error());
+		echo "can't connect to database";
+	}
+
+  function executeQuery($query){
+    $conn = $GLOBALS['conn'];
+    return mysqli_query($conn, $query);
+  }
 ?>
