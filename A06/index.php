@@ -4,7 +4,7 @@ include 'connect.php';
 
 // Fetch
 $groupChatID = isset($_GET['groupChatID']) ? intval($_GET['groupChatID']) : 1; // Default to 1 
-$senderID = isset($_SESSION['senderID']) ? intval($_SESSION['senderID']) : 7; // Default 8 (can change)
+$senderID = isset($_SESSION['senderID']) ? intval($_SESSION['senderID']) : 8; // Default 8 (can change)
 ?>
 
 <!DOCTYPE html>
@@ -226,6 +226,22 @@ $senderID = isset($_SESSION['senderID']) ? intval($_SESSION['senderID']) : 7; //
             color: white;
             text-align: right;
         }
+
+        .delete-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
     </style>
 </head>
 
@@ -253,19 +269,22 @@ $senderID = isset($_SESSION['senderID']) ? intval($_SESSION['senderID']) : 7; //
                     $stmt->execute();
                     $resultGroupChat = $stmt->get_result();
 
+
                     if ($row = $resultGroupChat->fetch_assoc()) {
                         $groupName = htmlspecialchars($row['name']);
-                        echo "<img src='images/" . htmlspecialchars($row['picture']) . "' alt='Group Chat Picture'>";
+                        $groupPicture = htmlspecialchars($row['picture']);
                         $theme = htmlspecialchars($row['theme']);
-                        $icons = [
-                            'voiceCall' => $row['voiceCall'],
-                            'videoChat' => $row['videoChat'],
-                            'more' => $row['more'],
-                            'attachment' => $row['attachment'],
-                            'gallery' => $row['gallery'],
-                            'gif' => $row['gif'],
-                            'sendMessage' => $row['sendMessage'],
-                        ];
+
+                        $icons = array();
+                        $icons['voiceCall'] = htmlspecialchars($row['voiceCall']);
+                        $icons['videoChat'] = htmlspecialchars($row['videoChat']);
+                        $icons['more'] = htmlspecialchars($row['more']);
+                        $icons['attachment'] = htmlspecialchars($row['attachment']);
+                        $icons['gallery'] = htmlspecialchars($row['gallery']);
+                        $icons['gif'] = htmlspecialchars($row['gif']);
+                        $icons['sendMessage'] = htmlspecialchars($row['sendMessage']);
+
+                        echo "<img src='images/" . $groupPicture . "' alt='Group Chat Picture'>";
                     }
                     ?>
                 </div>
@@ -296,7 +315,7 @@ $senderID = isset($_SESSION['senderID']) ? intval($_SESSION['senderID']) : 7; //
 
             while ($message = $resultMessages->fetch_assoc()) {
                 $messageClass = ($message['senderID'] == $senderID) ? 'message-right' : 'message-left';
-                echo "<div class='message $messageClass' onmouseover='showDeleteButton(this)' onmouseout='hideDeleteButton(this)'>";
+                echo "<div class='message $messageClass'>";
                 if ($message['senderID'] != $senderID) {
                     echo "<div class='profile-picture'><img src='" . htmlspecialchars($message['profilePicture']) . "'></div>";
                 }
@@ -306,41 +325,22 @@ $senderID = isset($_SESSION['senderID']) ? intval($_SESSION['senderID']) : 7; //
                 }
                 echo "<div class='text'>" . htmlspecialchars($message['message']) . "</div>";
 
-                // dateTime
+                // Displaying DateTime
                 echo "<div class='dateTime' style='font-size: 0.8em; color: white; text-align: right;'>";
                 echo date('h:i A', strtotime($message['dateTime']));
                 echo "</div>";
 
-                // delete btn, hidden by default
-                echo "<button class='delete-btn' style='display:none;' onclick='deleteMessage(" . $message['messageID'] . ")'>Delete</button>";
-                echo "</div>";
-                echo "</div>";
+                // Delete Button (direct PHP call to delete)
+                if ($message['senderID'] == $senderID) {  // Only allow the sender to delete the message
+                    echo "<a href='deleteMessage.php?id=" . $message['messageID'] . "&groupChatID=$groupChatID' class='delete-btn' onclick='return confirm(\"Are you sure you want to delete this message?\")'>Delete</a>";
+                }
+                echo "</div>"; // Close message-content div
+                echo "</div>"; // Close message div
             }
             ?>
         </div>
 
-        <script>
-            function showDeleteButton(messageElement) {
-                // delete btn hover
-                messageElement.querySelector('.delete-btn').style.display = 'block';
-            }
 
-            function hideDeleteButton(messageElement) {
-                // delete btn hover hide
-                messageElement.querySelector('.delete-btn').style.display = 'none';
-            }
-
-            function deleteMessage(messageId) {
-                if (confirm("Are you sure you want to delete this message?")) {
-                    fetch('deleteMessage.php?id=' + messageId)
-                        .then(response => response.text())
-                        .then(data => {
-                            location.reload();
-                        })
-                        .catch(error => console.error('Error:', error));
-                }
-            }
-        </script>
 
         <!-- Input Section -->
         <div class="input-section">
