@@ -4,7 +4,7 @@ include 'connect.php';
 
 // Fetch
 $groupChatID = isset($_GET['groupChatID']) ? intval($_GET['groupChatID']) : 1; // Default to 1 
-$senderID = isset($_SESSION['senderID']) ? intval($_SESSION['senderID']) : 1; // Default 8 (can change)
+$senderID = isset($_SESSION['senderID']) ? intval($_SESSION['senderID']) : 8; // Default 8 (can change)
 
 
 $errorMessage = '';
