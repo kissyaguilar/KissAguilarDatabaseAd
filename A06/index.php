@@ -4,7 +4,13 @@ include 'connect.php';
 
 // Fetch
 $groupChatID = isset($_GET['groupChatID']) ? intval($_GET['groupChatID']) : 1; // Default to 1 
-$senderID = isset($_SESSION['senderID']) ? intval($_SESSION['senderID']) : 8; // Default 8 (can change)
+$senderID = isset($_SESSION['senderID']) ? intval($_SESSION['senderID']) : 1; // Default 8 (can change)
+
+
+$errorMessage = '';
+if (isset($_GET['error']) && $_GET['error'] == 'emptyMessage') {
+    $errorMessage = 'Please type a message before sending.';
+}
 ?>
 
 <!DOCTYPE html>
@@ -242,6 +248,19 @@ $senderID = isset($_SESSION['senderID']) ? intval($_SESSION['senderID']) : 8; //
         .delete-btn:hover {
             background-color: #c0392b;
         }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .warning-sign {
+            color: red;
+            font-size: 18px;
+            margin-right: 10px;
+        }
     </style>
 </head>
 
@@ -334,45 +353,35 @@ $senderID = isset($_SESSION['senderID']) ? intval($_SESSION['senderID']) : 8; //
                 if ($message['senderID'] == $senderID) {  // Only allow the sender to delete the message
                     echo "<a href='deleteMessage.php?id=" . $message['messageID'] . "&groupChatID=$groupChatID' class='delete-btn' onclick='return confirm(\"Are you sure you want to delete this message?\")'>Delete</a>";
                 }
-                echo "</div>"; // Close message-content div
-                echo "</div>"; // Close message div
+                echo "</div>";
+                echo "</div>";
             }
             ?>
         </div>
 
-
-
         <!-- Input Section -->
         <div class="input-section">
-            <form action="insertMessage.php" method="POST" onsubmit="return validateMessage();">
-                <!-- Icons -->
+            <form action="insertMessage.php" method="POST">
                 <div class="input-icons">
                     <?php foreach (['attachment', 'gallery', 'gif'] as $icon): ?>
                         <div class="icon"
                             style="background-image: url('images/<?php echo htmlspecialchars($icons[$icon]); ?>');"></div>
                     <?php endforeach; ?>
                 </div>
-
-                <!-- Input Field -->
                 <input type="text" id="messageInput" name="message" placeholder="Type a message..." required>
-
-                <!-- Send Button -->
                 <button type="submit" class="icon send"
                     style="background-image: url('images/<?php echo htmlspecialchars($icons['sendMessage']); ?>');"></button>
-
-                <!-- Hidden Inputs -->
                 <input type="hidden" name="groupChatID" value="<?php echo $groupChatID; ?>">
                 <input type="hidden" name="senderID" value="<?php echo $senderID; ?>">
             </form>
-        </div>
 
-        <script>
-            function validateMessage() {
-                const message = document.getElementById('messageInput').value.trim();
-                if (message === "") {
-                    alert("Please type a message before sending.");
-                    return false;
-                }
-                return true;
-            }
-        </script>
+            <!-- Display the error message if there is one -->
+            <?php if ($errorMessage): ?>
+                <div class="error-message">
+                    <span class="warning-sign">⚠️</span>
+                    <?php echo $errorMessage; ?>
+                </div>
+            <?php endif; ?>
+</body>
+
+</html>

@@ -1,25 +1,26 @@
 <?php
+
 include 'connect.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data 
-    $message = mysqli_real_escape_string($conn, $_POST['message']);
-    $groupChatID = intval($_POST['groupChatID']);
-    $senderID = intval($_POST['senderID']);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $message = trim($_POST['message']);
+    $groupChatID = isset($_POST['groupChatID']) ? intval($_POST['groupChatID']) : 1;
+    $senderID = isset($_POST['senderID']) ? intval($_POST['senderID']) : 8;
 
-    // INSERT OF DATA
-    $stmt = $conn->prepare("INSERT INTO messages (message, groupChatID, senderID) VALUES (?, ?, ?)");
-    $stmt->bind_param("sii", $message, $groupChatID, $senderID);
-
-    if ($stmt->execute()) {
-        header("Location: index.php");
-        exit();
-    } else {
-        echo "Error: " . $stmt->error;
+    if (empty($message)) {
+        header("Location: index.php?error=emptyMessage");
+        exit;
     }
 
-    $stmt->close();
-}
+    $query = "INSERT INTO messages (groupChatID, senderID, message, dateTime) VALUES (?, ?, ?, NOW())";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("iis", $groupChatID, $senderID, $message);
+    $stmt->execute();
 
-$conn->close();
+    // iis means int, int, string parameters
+
+    // Redirect back to the chat page after insertion
+    header("Location: index.php?groupChatID=$groupChatID");
+    exit;
+}
 ?>

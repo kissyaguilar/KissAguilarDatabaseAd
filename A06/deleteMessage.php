@@ -3,7 +3,7 @@ include 'connect.php';
 
 if (isset($_GET['id']) && isset($_GET['groupChatID'])) {
     $messageID = intval($_GET['id']);
-    $groupChatID = intval($_GET['groupChatID']); 
+    $groupChatID = intval($_GET['groupChatID']);
 
     // DELETE QUERY
     $query = "DELETE FROM messages WHERE messageID = ?";
