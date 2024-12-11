@@ -1,0 +1,140 @@
+#navBar,
+.nav-link {
+    font-family: 'Instrument Serif', serif;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+#navBar {
+    background-color: #333;
+}
+
+#navBar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #CCCE31, maroon);
+    box-shadow: 0px 0px 0px 3px rgb(100 100 100 / .7);
+}
+
+.animated-image {
+    width: 50%;
+    max-width: 800px;
+    animation: slide-right 2s ease-in-out;
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.table thead th {
+    background-color: maroon !important;
+    color: white !important;
+    font-weight: bold;
+    text-align: center;
+}
+
+.table tbody td {
+    background-color: #e6e6a4;
+    color: #800000;
+    font-weight: normal;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #800000;
+}
+
+.table-responsive {
+    border-radius: 10px;
+}
+
+.btn-primary {
+    background-color: maroon;
+    border-color: #D67272;
+}
+
+.btn-primary:hover {
+    background-color: #3C0008;
+    border-color: #B15050;
+}
+
+.btn-secondary {
+    background-color: #CCCE31;
+    border-color: #FAD02E;
+    color: #000000;
+}
+
+.btn-secondary:hover {
+    background-color: #E6C20A;
+    border-color: #E6C20A;
+}
+
+.form-label {
+    font-family: 'Instrument Serif', serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: maroon;
+    text-shadow: 2px 2px 4px white;
+}
+
+.form-control:hover {
+    border-color: maroon;
+    color: maroon;
+}
+
+.form-control option:hover {
+    background-color: maroon;
+    color: white;
+}
+
+.gradient-card {
+    background: linear-gradient(90deg, #CCCE31, maroon);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#footer {
+    background: linear-gradient(to right, #CCCE31, #800000);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.text-gold {
+    color: #CCCE31;
+}
+
+.text-white {
+    color: white;
+}
+
+.font-italic {
+    font-style: italic;
+}
+
+#footer .container p {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    #footer {
+        padding: 15px 0;
+    }
+}
